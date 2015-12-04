@@ -18,3 +18,9 @@ one:
   description: description
   image_url: 'image'
   price: 1.00
+
+two:
+  title: two
+  description: description
+  image_url: 'image'
+  price: 2.00
