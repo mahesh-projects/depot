@@ -10,4 +10,8 @@ class Product < ActiveRecord::Base
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
 
+	#Return the latest updated products
+	def self.latest
+		Product.order(:updated_at).last
+	end
 end
