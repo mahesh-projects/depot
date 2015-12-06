@@ -21,4 +21,6 @@
 	<% end %>
 <% end %>
 
+<% if @counter > 5 %>
 <footer text-align="right"><%= pluralize(@counter, 'view')  %></footer>
+<% end %>
