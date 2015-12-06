@@ -12,7 +12,9 @@
 				<h3><%= product.title %></h3>
 				<%= sanitize(product.description) %>
 				<div class="price_line">	
-					<span class="price"><%= number_to_currency(product.price) %></span>
+					<span class="price"><%= number_to_currency(product.price) %></span>	
+					<!--The button points to the line_items controller and the create method, product instance is passed as parameter. Rails will pull out the product id based on the product instance-->
+					<%= button_to 'Add to Cart', line_items_path(product_id: product) %>
 				</div>
 			</div>
 		<% end %>
