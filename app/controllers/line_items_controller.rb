@@ -1,4 +1,9 @@
 class LineItemsController < ApplicationController
+  #use the CurrentCart module and set_cart method before creating line_item
+  #This helps to find the cart (if one available) and add the line item to it
+  #Else to create a cart and add the line item
+  include CurrentCart
+  before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -24,11 +29,15 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
+    #Use the params object to get the product id from the request
+    product = Product.find(params[:product_id])
+    #Use the product found to build a relationship between the cart and the product and 
+    #hold the product as a line item in the cart
+    @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

@@ -39,6 +39,7 @@
 			margin-top: 0.5em;
 			margin-bottom: 0.8em;
 
+			//button_to creates an HTML <form>, and that form contains an HTML <div>. Both of these are //normally block elements, which will appear on the next line. We’d like to place them next to //the price, so we need to add a little CSS magic to make them inline	
 			form, div {
 				display: inline
 			}
