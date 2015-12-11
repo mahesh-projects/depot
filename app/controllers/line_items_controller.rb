@@ -33,7 +33,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     #Use the product found to build a relationship between the cart and the product and 
     #hold the product as a line item in the cart
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product.id, product.price)
 
     respond_to do |format|
       if @line_item.save
