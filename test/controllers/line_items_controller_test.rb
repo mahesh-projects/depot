@@ -3,6 +3,7 @@ require 'test_helper'
 class LineItemsControllerTest < ActionController::TestCase
   setup do
     @line_item = line_items(:one)
+    @cart = carts(:one)
   end
 
   test "should get index" do
@@ -41,9 +42,9 @@ class LineItemsControllerTest < ActionController::TestCase
 
   test "should destroy line_item" do
     assert_difference('LineItem.count', -1) do
-      delete :destroy, id: @line_item
+      delete :destroy, id: @line_item.to_param
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to cart_path(assigns(@cart.id))
   end
 end

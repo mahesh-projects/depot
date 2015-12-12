@@ -10,6 +10,8 @@
 			<td>Quantity</td>
 			<td>Unit Price</td>
 			<td>Total</td>
+			<td>     </td>
+
 		</tr>
 	</thead>
 
@@ -20,6 +22,8 @@
 			<td><%= item.price %></td>
 			
 			<td class="item_price"><%= number_to_currency(item.total_price) %></td>
+
+			<td><%= button_to 'Remove', item, method: :'delete', data: { confirm: 'Are you sure?'} %></td>
 		</tr>	
 	<% end %>
 
